@@ -1,28 +1,20 @@
-
-git add .gitignore
-git commit -m "Add .gitignore to exclude generated files and dependencies"
-ndencies
-/react-frontend/build/             # Compiled output for deployment (generated)
-/react-frontend/.env               # Environment variables (sensitive/local)
-/react-frontend/package-lock.json  # Note: Some teams prefer to track this, but for simplicity/avoiding conflicts in a personal project, ignoring it is common.
-                                   # If you want to track exact dependency versions, REMOVE this line.
-                                   # For most React projects, `package-lock.json` *is* usually committed for reproducible builds.
-                                   # Let's assume for a personal learning project, you might want simpler management.
-                                   # For a team/prod, you'd likely commit it. I'll include it in the ignore list for now,
-                                   # but highlight this note.
-/react-frontend/npm-debug.log* # npm debug logs
+# Node.js Frontend ignores (for react-frontend)
+/react-frontend/node_modules/
+/react-frontend/build/
+/react-frontend/.env
+/react-frontend/package-lock.json
 
 # Python Backend ignores (for fastapi-backend)
-/fastapi-backend/__pycache__/      # Python compiled bytecode files
-/fastapi-backend/venv/             # Python virtual environment (large dependencies)
-/fastapi-backend/.env              # Environment variables (sensitive/local)
-/fastapi-backend/*.db              # Database files (message.db, notebook.db - data should not be tracked)
+/fastapi-backend/__pycache__/
+/fastapi-backend/venv/
+/fastapi-backend/.env
+/fastapi-backend/*.db
 
-# General OS and Editor ignores (good practice, applies project-wide)
-.DS_Store           # macOS specific metadata
-.env                # If you have a .env file directly in the root
+# General OS and Editor ignores
+.DS_Store
+.env # For a root .env file if it exists
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-.vscode/            # VS Code workspace settings
-.idea/              # IntelliJ/PyCharm IDE files
+.vscode/
+.idea/
