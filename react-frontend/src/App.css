@@ -1,0 +1,475 @@
+/* App.css - UX-Optimized Theme */
+
+/* Color Variables for easy theme management */
+:root {
+  /* UX-Optimized Colors */
+  --color-background-app: #f9fafb; /* Brighter, softer white-gray for overall background */
+  --color-surface-card: #ffffff; /* Clean base, max readability for cards */
+  --color-primary-text: #111827; /* Deep neutral for strong contrast */
+  --color-secondary-text: #4b5563; /* Improved legibility for secondary info */
+  --color-accent-primary: #2563eb; /* Better contrast and clarity than default blue */
+  --color-hover-accent: #1d4ed8; /* Subtle hover shift for intuitive UI feedback */
+  --color-border-lines: #e5e7eb; /* Softer contrast for non-intrusive separators */
+  --color-disabled-gray: #9ca3af; /* Already accessible */
+  --color-error: #b91c1c; /* Consistent with common red used in accessibility */
+  --color-success: #059669; /* High clarity green for feedback */
+  --color-focus-ring: rgba(37,99,235,0.25); /* Aligns with primary indigo brand tone */
+
+  /* Derived or existing colors, mapped to new scheme */
+  --color-error-bg: #FFEFF0; /* Light background for error messages */
+  --color-success-bg: #d4edda; /* Light background for success messages */
+  --color-neutral-bg: #F0F2F5; /* For neutral sentiment/elements */
+  --color-neutral-text: #5C677C;
+  --color-neutral-border: #CED4DA;
+}
+
+
+/* Base Styles - Body as the main canvas */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Align content to the top */
+  overflow-x: hidden;
+  /* Main app background: Using the new background color */
+  background-color: var(--color-background-app);
+  color: var(--color-primary-text); /* Default text color for body */
+}
+
+/* Bounce animation for titles/elements */
+@keyframes bounceIn {
+  0% {
+    transform: scale(0);
+    opacity: 0.001;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 100;
+  }
+}
+
+/* Main App Container - Acts as the central content column */
+.app-container {
+  width: 100%;
+  max-width: 1200px; /* Scaled down max-width for a more compact layout */
+  margin: 2rem auto; /* Adjusted margin */
+  padding: 0 1.5rem; /* Standard horizontal padding */
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem; /* Adjusted spacing between main sections like header and cards */
+  box-sizing: border-box;
+}
+
+/* Header Buttons for Navigation - Adjusted for new theme and size */
+.header-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem; /* Adjusted gap for spacing between buttons */
+  padding: 1.2rem 1.5rem; /* Adjusted padding for a more compact feel */
+  background-color: var(--color-primary-text); /* Dark background for header buttons */
+  border-radius: 0.6rem; /* Slightly less rounded */
+  box-shadow: 0 5px 15px rgba(17, 24, 39, 0.4); /* Stronger shadow aligned with primary text */
+  width: 100%;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+}
+
+.nav-button {
+  padding: 0.9rem 2rem; /* Adjusted padding for clear, clickable buttons */
+  border-radius: 0.6rem;
+  font-weight: 600; /* Slightly less bold for subtlety */
+  font-size: 1rem; /* Standard font size */
+  color: var(--color-surface-card); /* White text */
+  background-color: var(--color-primary-text); /* Primary text color for button background */
+  border: 1px solid var(--color-accent-primary); /* Accent primary border */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(17, 24, 39, 0.2); /* Subtle button shadow aligned with primary text */
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.nav-button:hover {
+  background: linear-gradient(to right, var(--color-primary-text), var(--color-hover-accent)); /* Primary text to hover accent gradient */
+  transform: translateY(-2px); /* Subtle lift on hover */
+  box-shadow: 0 6px 15px rgba(17, 24, 39, 0.3); /* Deeper shadow on hover aligned with primary text */
+  color: var(--color-surface-card);
+}
+
+.nav-button.active {
+  background-color: var(--color-accent-primary); /* Accent primary for active */
+  border-color: var(--color-surface-card);
+  color: var(--color-surface-card);
+  box-shadow: 0 0 15px rgba(37, 99, 235, 0.7), 0 5px 15px rgba(17, 24, 39, 0.3); /* Glowing effect aligned with accent and primary text */
+  transform: scale(1.02); /* Subtle scale for active state */
+}
+
+/* Card - Represents a content block (for forms, view, ML) */
+.card {
+  background-color: var(--color-surface-card); /* White background for content blocks */
+  padding: 2rem; /* Adjusted padding for balanced content */
+  border-radius: 0.8rem; /* Adjusted border radius for a modern feel */
+  box-shadow: 0 10px 30px rgba(17, 24, 39, 0.15); /* Stronger, more professional shadow aligned with primary text */
+  width: 100%;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; /* Adjusted gap within cards */
+  box-sizing: border-box;
+}
+
+.notebook-page {
+  min-height: 15px; /* Reduced minimum height for pages */
+  position: relative;
+  overflow: hidden;
+}
+
+/* Removed notebook lines for a cleaner website aesthetic */
+.notebook-page::before {
+  display: none;
+}
+
+/* Card Title */
+.card-title {
+  font-size: 2.2rem; /* Adjusted title size */
+  font-weight: 70;
+  text-align: center;
+  color: var(--color-primary-text); /* Primary text color for title */
+  margin-bottom: 0.005em; /* Adjusted space below title */
+  letter-spacing: 0.01em; /* Adjusted letter spacing */
+  animation: bounceIn 0.6s ease-out;
+  position: relative;
+  z-index: 2;
+}
+
+.page-view-title {
+  border-bottom: 2px solid var(--color-accent-primary); /* Accent primary underline */
+  padding-bottom: 0.6rem; /* Adjusted padding below line */
+  margin-bottom: 1.8rem;
+}
+
+/* Input Groups - Adjusted for professional forms */
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem; /* Adjusted gap between input fields */
+  margin-bottom: 1.2rem; /* Adjusted space below input group */
+  position: relative;
+  z-index: 2;
+}
+
+/* Input Fields */
+.input-field {
+  flex-grow: 1;
+  padding: 1rem 1.2rem; /* Adjusted padding for inputs */
+  border: 1px solid var(--color-border-lines); /* Subtle border lines */
+  border-radius: 0.5rem; /* Slightly less rounded */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  outline: none;
+  background-color: var(--color-surface-card);
+  color: var(--color-primary-text);
+  font-size: 0.95rem; /* Standard font size */
+  box-shadow: inset 0 1px 2px rgba(17, 24, 39, 0.08); /* Subtle inner shadow aligned with primary text */
+}
+
+.input-field::placeholder {
+  color: var(--color-secondary-text); /* Secondary text color for placeholder */
+}
+
+.input-field:focus {
+  border-color: var(--color-accent-primary); /* Accent primary focus border */
+  box-shadow: 0 0 8px 2px var(--color-focus-ring); /* Prominent focus shadow using focus ring color */
+  background-color: var(--color-surface-card);
+}
+
+.textarea-field {
+  min-height: 100px; /* Reduced minimum height for text areas */
+  line-height: 1.6; /* Better readability for content */
+}
+
+/* Buttons (General Styles) - Made clearer and more impactful */
+.button {
+  padding: 0.8rem 1.8rem; /* Adjusted padding for all buttons */
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 0.95rem; /* Standard font size */
+  color: var(--color-surface-card);
+  background-color: var(--color-primary-text); /* Primary text color for button background */
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 10px rgba(17, 24, 39, 0.2); /* Enhanced shadow aligned with primary text */
+  text-transform: uppercase;
+  letter-spacing: 0.05em; /* Adjusted letter spacing */
+}
+
+.button:hover {
+  background: linear-gradient(to right, var(--color-primary-text), var(--color-hover-accent)); /* Primary text to hover accent gradient */
+  color: var(--color-surface-card);
+  transform: translateY(-1px); /* Subtle lift on hover */
+  box-shadow: 0 6px 15px rgba(17, 24, 39, 0.3); /* Deeper shadow on hover aligned with primary text */
+}
+
+.button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  background-color: var(--color-disabled-gray); /* Muted gray for disabled */
+  box-shadow: none;
+}
+
+/* Button Groups for forms and actions */
+.button-group {
+  display: flex;
+  gap: 0.8rem; /* Adjusted gap */
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 2;
+}
+
+/* Contextual button colors (using new theme) */
+.save-button { background-color: var(--color-primary-text); }
+.save-button:hover { background: linear-gradient(to right, var(--color-primary-text), var(--color-hover-accent)); }
+
+.cancel-button { background-color: var(--color-secondary-text); } /* Secondary text color for cancel */
+.cancel-button:hover { background: linear-gradient(to right, var(--color-secondary-text), #3a414a); } /* Darker secondary text on hover */
+
+.edit-button { background-color: var(--color-accent-primary); color: var(--color-surface-card); } /* Accent primary for edit */
+.edit-button:hover { background: linear-gradient(to right, var(--color-accent-primary), var(--color-hover-accent)); color: var(--color-surface-card);}
+
+.delete-button { background-color: var(--color-error); } /* Error color for delete */
+.delete-button:hover { background: linear-gradient(to right, var(--color-error), #8d1616); } /* Darker error red on hover */
+
+.view-button { background-color: var(--color-secondary-text); color: var(--color-surface-card); } /* Secondary text color for view */
+.view-button:hover { background: linear-gradient(to right, var(--color-secondary-text), #3a414a); color: var(--color-surface-card);}
+
+
+/* Loading & Error Messages */
+.loading-text {
+  text-align: center;
+  color: var(--color-primary-text);
+  font-weight: 600;
+  margin-top: 1.5rem;
+  font-style: italic;
+  position: relative;
+  z-index: 2;
+}
+.error-box {
+  background-color: var(--color-error-bg);
+  border: 1px solid var(--color-error);
+  color: var(--color-error);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 2px 8px rgba(17, 24, 39, 0.1); /* Aligned with primary text */
+}
+.error-box strong {
+  margin-right: 0.5rem;
+}
+
+/* Message List (now for pages list) - Styled as a content section */
+.message-list {
+  background-color: var(--color-surface-card); /* White background */
+  padding: 1.8rem; /* Adjusted padding */
+  border-radius: 0.8rem;
+  box-shadow: 0 10px 30px rgba(17, 24, 39, 0.15); /* Consistent shadow with cards aligned with primary text */
+  max-height: 55vh; /* Adjusted max height for scrollable list */
+  overflow-y: auto;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  border: none;
+  box-sizing: border-box;
+}
+
+.message-list:hover {
+  background-color: var(--color-surface-card); /* Keep consistent background on hover */
+}
+
+/* Individual Message/Page Item - Clearer design */
+.message-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem; /* Adjusted gap */
+  margin-bottom: 0.8rem;
+  background-color: var(--color-background-app); /* Light background for items */
+  padding: 0.9rem 1.2rem; /* Adjusted padding */
+  border-radius: 0.6rem;
+  border: 1px solid var(--color-border-lines); /* Subtle border */
+  box-shadow: 0 1px 5px rgba(17, 24, 39, 0.08); /* More subtle shadow aligned with primary text */
+  transition: box-shadow 0.2s ease, transform 0.2s ease, background-color 0.2s ease;
+}
+.message-item:last-child {
+  margin-bottom: 0;
+}
+
+.message-item:hover {
+  background-color: var(--color-surface-card); /* White hover effect */
+  transform: translateY(-2px); /* More pronounced lift */
+  box-shadow: 0 4px 12px rgba(17, 24, 39, 0.15); /* Deeper shadow on hover aligned with primary text */
+}
+
+@media (min-width: 640px) {
+  .message-item {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.message-text.page-title {
+  font-size: 1.2rem; /* Adjusted title size */
+  font-weight: 600;
+  color: var(--color-primary-text);
+  word-break: break-word;
+  flex-grow: 1;
+}
+
+.page-content-display {
+  background-color: var(--color-surface-card); /* Clean white background for content display */
+  padding: 1.2rem 1.5rem; /* Adjusted padding */
+  border-radius: 0.6rem;
+  border: 1px solid var(--color-border-lines); /* Solid subtle border for content area */
+  min-height: 150px; /* Reduced min height */
+  line-height: 1.7;
+  color: var(--color-primary-text);
+  white-space: pre-wrap;
+  word-break: break-word;
+  position: relative;
+  z-index: 2;
+  box-shadow: inset 0 1px 3px rgba(17, 24, 39, 0.05); /* Subtle inner shadow aligned with primary text */
+  font-size: 0.95rem; /* Standard text size in display */
+}
+
+.message-actions {
+  display: flex;
+  gap: 0.6rem; /* Adjusted gap between action buttons */
+  flex-shrink: 0;
+}
+
+.empty-list-text {
+  color: var(--color-primary-text);
+  padding: 2rem;
+  text-align: center;
+  font-size: 1rem;
+}
+
+/* Sentiment Analysis Specific Styles */
+.sentiment-result {
+  margin-top: 1.5rem;
+  padding: 1.2rem;
+  border-radius: 0.6rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 2px 8px rgba(17, 24, 39, 0.1); /* Aligned with primary text */
+}
+
+.sentiment-result.positive {
+  background-color: var(--color-success-bg);
+  color: var(--color-success);
+  border: 1px solid var(--color-success);
+}
+
+.sentiment-result.negative {
+  background-color: var(--color-error-bg);
+  color: var(--color-error);
+  border: 1px solid var(--color-error);
+}
+
+.sentiment-result.neutral {
+  background-color: var(--color-neutral-bg);
+  color: var(--color-neutral-text);
+  border: 1px solid var(--color-neutral-border);
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .app-container {
+    padding: 0 0.8rem;
+    margin: 1rem auto;
+    gap: 1rem;
+  }
+
+  .header-buttons {
+    padding: 0.8rem;
+    gap: 0.6rem;
+    border-radius: 0.4rem;
+  }
+
+  .nav-button {
+    padding: 0.6rem 1rem;
+    font-size: 0.85rem;
+    flex-grow: 1;
+  }
+
+  .card {
+    padding: 1.5rem;
+    gap: 1rem;
+    border-radius: 0.6rem;
+  }
+
+  .card-title {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .input-field {
+    padding: 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  .textarea-field {
+    min-height: 80px;
+  }
+
+  .button {
+    padding: 0.7rem 1.2rem;
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+  }
+
+  .button-group {
+    gap: 0.5rem;
+  }
+
+  .message-list {
+    padding: 1.5rem;
+    border-radius: 0.6rem;
+  }
+
+  .message-item {
+    padding: 0.8rem 1rem;
+    gap: 0.6rem;
+    border-radius: 0.5rem;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .message-text.page-title {
+    font-size: 1.1rem;
+  }
+
+  .page-content-display {
+    padding: 1rem 1.2rem;
+    min-height: 120px;
+    font-size: 0.85rem;
+  }
+
+  .message-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .empty-list-text {
+    padding: 1.5rem;
+    font-size: 0.9rem;
+  }
+}
