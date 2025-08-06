@@ -10,7 +10,6 @@ app = FastAPI(
     version="1.0.0"
 )
 
-# Configure CORS (Cross-Origin Resource Sharing)
 origins = [
     "http://localhost:3000",  # Default React development server port
     "http://127.0.0.1:3000",  # Common localhost variant
